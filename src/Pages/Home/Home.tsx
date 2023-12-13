@@ -17,13 +17,12 @@ const Home = () => {
                     <Header />
                 </div>
                 <div  >
-                    <div className="px-20 py-20  flex items-center " >
+                    <div className="px-20 py-20  flex items-center xsm:px-5 xsm:py-5 " >
                         <div className=" w-full" >
                             <motion.p
-                                className="text-black font-bold text-4xl flex gap-5"
+                                className="text-black font-bold text-4xl flex gap-5 xsm:text-base"
                                 initial={{ x: -500 }}
                                 animate={{ x: 0 }}
-                                
                                 whileHover={{ color: "green", textDecoration: "underline" }}
 
                             >Expolre Our Fancey And Simple Dashboard <FaArrowRightLong size={40} /></motion.p>

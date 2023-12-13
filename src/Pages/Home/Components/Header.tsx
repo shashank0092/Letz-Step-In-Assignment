@@ -6,7 +6,7 @@ const Header=()=>{
         <>
             <div className="h-[100vh] w-[98.9vw] flex flex-col gap-10 justify-center items-center  bg-gradient-to-r from-[#19191B] to-[#606373]" >
                 <div>
-                    <motion.p className="text-white text-7xl font-bold -tracking-tight line-clamp-6" animate={{scale:2}} transition={{type:"just"}}  >Letz Step In</motion.p>
+                    <motion.p className="text-white text-7xl font-bold -tracking-tight line-clamp-6 xsm:text-xl" animate={{scale:2}} transition={{type:"just"}}  >Letz Step In</motion.p>
                 </div>
 
                 <div>
