@@ -1,5 +1,7 @@
 import { FaArrowRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { useGlobalContext } from "../../../global/store";
+
 interface Props {
     carddetails: {
         image: string;
@@ -9,7 +11,11 @@ interface Props {
     }
 }
 
+
+
 const Cards = ({ carddetails }: Props) => {
+
+    const{setCurrentDashboard}=useGlobalContext()
 
     return (
         <>
@@ -31,7 +37,7 @@ const Cards = ({ carddetails }: Props) => {
                     </div>
 
                     <div className=" flex items-center" >
-                        <Link to={carddetails?.route} className="bg-green-600 text-white py-5 px-5 rounded-2xl flex gap-3 items-center  " >Dashboard <FaArrowRight /> </Link>
+                        <Link onClick={()=>setCurrentDashboard(carddetails?.route)} to={carddetails?.route} className="bg-green-600 text-white py-5 px-5 rounded-2xl flex gap-3 items-center  " >Dashboard <FaArrowRight /> </Link>
                     </div>
                 </div>
             </div>

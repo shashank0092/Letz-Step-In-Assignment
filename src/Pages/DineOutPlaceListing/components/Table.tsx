@@ -1,4 +1,4 @@
-import { RealStateData } from "../constant/RealstateData";
+import { DineOutPlaceData } from "../constant/DineOutPalceData";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import { FaAngleDoubleLeft } from "react-icons/fa";
 import {useState,useEffect} from "react"
@@ -10,7 +10,7 @@ const Table = () => {
     useEffect(()=>{
         const setData=[]
         for(let i=0;i<10;i++){
-            setData.push(RealStateData[i]);
+            setData.push(DineOutPlaceData[i]);
         }
         SetResultData(setData)
     },[])
@@ -23,7 +23,7 @@ const Table = () => {
         }
         const setData=[]
         for(let i=number-1;i<number+9;i++){
-            setData.push(RealStateData[i])
+            setData.push(DineOutPlaceData[i])
         }
         SetPageIndex(pageIndex+10)
         console.log(pageIndex,"after + btn")
@@ -42,7 +42,7 @@ const Table = () => {
 
         for(let i=number;i<=number-10;i--){
             console.log(i);
-            setData.push(RealStateData[i]);
+            setData.push(DineOutPlaceData[i]);
         }
         SetPageIndex(pageIndex-10)
         SetResultData(setData)

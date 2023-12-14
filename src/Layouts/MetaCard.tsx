@@ -11,7 +11,7 @@ const MetaCard = ({ icons, text, color, number }: Props) => {
     return (
         <>
 
-            <div className={`${color} w-1/5 h-44  rounded-xl flex flex-col justify-evenly items-center`} >
+            <div className={`${color} w-1/5 h-44  rounded-xl flex flex-col justify-evenly items-center xsm:w-full  `} >
                 <div>
                     {icons}
                 </div>

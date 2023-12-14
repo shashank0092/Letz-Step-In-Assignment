@@ -1,30 +1,68 @@
-import React, { useState } from "react";
+import  { useState,useEffect } from "react";
 import {
   Menu,
   MenuItem,
   Sidebar
 } from "react-pro-sidebar";
-import { FiHome } from "react-icons/fi";
+import { FaHome } from "react-icons/fa";
 import { FaBuilding } from "react-icons/fa";
 import { FaBowlFood } from "react-icons/fa6";
 import { FaRocket } from "react-icons/fa";
+import { FaBookOpen } from "react-icons/fa6";
 import { FaWeightHanging } from "react-icons/fa";
 import { GrUpgrade } from "react-icons/gr";
+import { FaUser } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { useGlobalContext } from "../global/store";
+
+
+interface themeType{
+  iconColor:string,
+  text:string,
+  image:string
+}
+
 
 const Header = () => {
 
+  const{setCurrentDashboard,currentDashboard}=useGlobalContext()
+  const[theme,setTheme]=useState<themeType>({iconColor:"",text:"",image:""})
 
+  
+  console.log(currentDashboard,"this is cureent dashboard")
+  
   const [menuCollapse, setMenuCollapse] = useState(false)
+
+  useEffect(()=>{
+    ThemeDecide()
+  },[])
+
+  const ThemeDecide=()=>{
+    if(currentDashboard=="/realstate"){
+      setTheme({iconColor:"green",text:"Real State",image:"https://ik.imagekit.io/shashank007/Letz%20Step%20In%20Assignment/Dark%20analytics-bro%20green.png?updatedAt=1702586376336"})
+    }
+    else if(currentDashboard=="/education"){
+      setTheme({iconColor:"blue",text:"Education Property",image:"https://ik.imagekit.io/shashank007/Letz%20Step%20In%20Assignment/Dark%20analytics-bro%20Blue.png?updatedAt=1702585590422"})
+    }
+    else if(currentDashboard=="/dineoutplace"){
+      setTheme({iconColor:"red",text:"Dining Place Property",image:"https://ik.imagekit.io/shashank007/Letz%20Step%20In%20Assignment/Dark%20analytics-bro%20Re.png?updatedAt=1702585778472"})
+    }
+    else{
+      setTheme({iconColor:"yellow",text:"Fitness Property",image:"https://ik.imagekit.io/shashank007/Letz%20Step%20In%20Assignment/Dark%20analytics-bro%20yellow.png?updatedAt=1702586318799"})
+    }
+  }
+
+
   const menuIconClick = () => {
     menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
   }
 
   return (
     <>
-      <div id="header" className="flex flex-col items-center " >
+      <div id="header" className="flex flex-col items-center   " >
 
-        <div>
-          <Sidebar collapsed={menuCollapse} style={{ height: "100vh", display: "flex", borderRight: "1px solid black" }} >
+        <div className="  xsm:bg-green-300 " >
+          <Sidebar collapsed={menuCollapse}    className={`h-[100vh] xsm:w-[100vw] flex border-1 border-r border-black   ${menuCollapse?(" xsm:h-[5vh]"):(" xsm:h-[20vh] xsm:w-[100vw]")} `}    >
             <div className="flex flex-col h-full justify-between"  >
               <div>
                 <div>
@@ -32,7 +70,7 @@ const Header = () => {
 
                     <p  >{menuCollapse ? (
                       <div className="flex justify-center items-center">
-                        <img src="https://ik.imagekit.io/shashank007/Letz%20Step%20In%20Assignment/LogoIcon.png?updatedAt=1702456713242" alt="small logo" className="h-1/2 w-4/5" onClick={menuIconClick} />
+                        <img src="https://ik.imagekit.io/shashank007/Letz%20Step%20In%20Assignment/LogoIcon.png?updatedAt=1702456713242" alt="small logo" className="h-1/2 w-4/5 xsm:w-1/2" onClick={menuIconClick} />
                       </div>
                     ) : (
                       <div className=" flex justify-center">
@@ -44,40 +82,63 @@ const Header = () => {
                 </div>
                 <div>
                   <Menu >
-                    <MenuItem icon={<FiHome />}>
-                      Home
+                    <MenuItem icon={<FaHome className={`text-${theme.iconColor}-300`}/>}>
+                      <Link onClick={()=>setCurrentDashboard(null)} to="/"  >Home</Link>
                     </MenuItem>
-                    <MenuItem active={true} icon={<FaBuilding />}>Category</MenuItem>
-                    <MenuItem icon={<FaBowlFood />}>Author</MenuItem>
-                    <MenuItem icon={<FaWeightHanging />}>Settings</MenuItem>
+                    <MenuItem active={true} icon={<FaBuilding className={`text-${theme.iconColor}-300`} />}>
+                    <Link onClick={()=>setCurrentDashboard("/realstate")} to="/realstate" >Real State</Link>
+                    </MenuItem>
+                    <MenuItem icon={<FaBowlFood className={`text-${theme.iconColor}-300`}/>}>
+                    <Link  onClick={()=>setCurrentDashboard("/dineoutplace")} to="/dineoutplace" >Dinner Place</Link>
+                    </MenuItem>
+                    <MenuItem icon={<FaBookOpen className={`text-${theme.iconColor}-300`} />}>
+                    <Link onClick={()=>setCurrentDashboard("/education")}  to="/education" >Education</Link>
+                    </MenuItem> 
+                    <MenuItem icon={<FaWeightHanging className={`text-${theme.iconColor}-300`} />}>
+                    <Link onClick={()=>setCurrentDashboard("/fitness")} to="/fitness" >Fitness</Link>
+                    </MenuItem>
                   </Menu>
                 </div>
-              </div>
-              <div className={` ${menuCollapse?("hidden"):("flex flex-col justify-center items-center gap-5 mb-5")} `} >
-                <div className="flex w-full justify-center" >
-                  <img src="https://ik.imagekit.io/shashank007/Letz%20Step%20In%20Assignment/Dark%20analytics-bro.png?updatedAt=1702562069121" alt="" className="w-2/4" />
-                </div>
-                <div className="flex items-center gap-3" >
-                  <div>
-                      <p className="text-xl text-green-600 font-semibold" >Hello User</p>
+              </div  >
+              {
+                menuCollapse ? (
+                  <div className="flex justify-center items-center h-1/5 xsm:none" >
+                    <FaUser onClick={()=>menuIconClick()} />
                   </div>
-                  <div>
-                    <FaRocket className="text-green-400" />
-                  </div>
-                </div>
-                
-                
-                <div>
-                  <p className="text-sm px-3 font-medium text-gray-600 text-center" >
-                    Hello User This is our Real State Dashboard.This is a normal version for watching graph and charts please buy subsciption
-                  </p>
-                </div>
-                <div>
-                  <button className="flex items-center gap-3 bg-black text-green-300 p-3 px-5 rounded-2xl" >
-                      Upgrade Pro <GrUpgrade/>
-                  </button>
-                </div>
-              </div>
+                ) : (
+                  <>
+                    <div className={` ${menuCollapse ? ("hidden ") : 
+                    
+                    ("flex flex-col justify-center items-center gap-5 mb-5 xsm:hidden")} `} >
+
+
+                      <div className="flex w-full justify-center xsm:hidden" >
+                        <img src={theme.image} alt="" className="w-2/4" />
+                      </div>
+                      <div className="flex items-center gap-3" >
+                        <div>
+                          <p className={`text-xl text-${theme.iconColor}-600  font-semibold`} >Hello User</p>
+                        </div>
+                        <div>
+                          <FaRocket className={`text-${theme.iconColor}-300`} />
+                        </div>
+                      </div>
+
+
+                      <div>
+                        <p className="text-sm px-3 font-medium text-gray-600 text-center" >
+                          Hello User This is our {`${theme.text}`} Dashboard.This is a normal version for watching graph and charts please buy subsciption
+                        </p>
+                      </div>
+                      <div>
+                        <button className={`flex items-center gap-3 bg-black text-${theme.iconColor}-300 p-3 px-5 rounded-2xl`} >
+                          Upgrade Pro <GrUpgrade />
+                        </button>
+                      </div>
+                    </div>
+                  </>
+                )
+              }
             </div>
           </Sidebar>
         </div>

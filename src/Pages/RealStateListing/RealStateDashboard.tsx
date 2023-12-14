@@ -7,24 +7,25 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { FaBuildingCircleCheck } from "react-icons/fa6";
 import Table from "./components/Table";
 import Footer from "../../Layouts/Footer";
+import { useGlobalContext } from "../../global/store";
 
 
 const RealStateDashboard = () => {
 
-
+    
 
     return (
         <>
-            <div className="w-full" >
-                <div className="fixed  border " >
+            <div className="w-full " >
+                <div className="fixed   " >
                     <SideNavigation />
                 </div>
 
-                <div className="pl-72 flex flex-col gap-10 w-full" >
+                <div className="pl-72 flex flex-col gap-10 w-full  xsm:pl-0" >
                     <div className="w-full py-5" >
                         <Header />
                     </div>
-                    <div className="flex justify-around" >
+                    <div className="flex justify-around xsm:flex-col xsm:gap-5 xsm:px-5" >
                         <MetaCard icons={<FaUser size={40} color="#ffff" />} text="Users" color="bg-blue-400" number="200" />
                         <MetaCard icons={<FaBuildingCircleCheck size={40} color="#ffff" />} text="Sold" color="bg-green-400" number="100" />
                         <MetaCard icons={<FaBuilding size={40} color="#ffff" />} text="In List" color="bg-red-400" number="300" />
@@ -32,15 +33,15 @@ const RealStateDashboard = () => {
                     </div>
                     <div className="" >
                         <div>
-                            <p className="text-4xl font-semibold" > Propertey Listed </p>
+                            <p className="text-4xl font-semibold xsm:text-lg xsm:pl-5 " > Propertey Listed </p>
                         </div>
-                        <div className="mb-16" >
+                        <div className="mb-16 " >
                             <Table />
                         </div>
                     </div>
                 </div>
 
-                <div className="absolute w-full" >
+                <div className="absolute w-full xsm:" >
                     <Footer />
                 </div>
             </div>
