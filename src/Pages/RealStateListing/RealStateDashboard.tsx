@@ -41,7 +41,7 @@ const RealStateDashboard = () => {
                     </div>
                 </div>
 
-                <div className="absolute w-full xsm:" >
+                <div className="absolute w-full " >
                     <Footer />
                 </div>
             </div>
