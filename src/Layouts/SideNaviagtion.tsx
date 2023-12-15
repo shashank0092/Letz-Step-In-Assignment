@@ -59,7 +59,7 @@ const Header = () => {
 
   return (
     <>
-      <div id="header" className="flex flex-col items-center   " >
+      <div id="header" className="flex flex-col items-center bg-white  " >
 
         <div className="  xsm:bg-green-300 " >
           <Sidebar collapsed={menuCollapse}    className={`h-[100vh] xsm:w-[100vw] flex border-1 border-r border-black   ${menuCollapse?(" xsm:h-[5vh]"):(" xsm:h-[20vh] xsm:w-[100vw]")} `}    >
@@ -103,7 +103,7 @@ const Header = () => {
               {
                 menuCollapse ? (
                   <div className="flex justify-center items-center h-1/5 xsm:none" >
-                    <FaUser onClick={()=>menuIconClick()} />
+                    <FaUser className={`text-${theme.iconColor}-300`} onClick={()=>menuIconClick()} />
                   </div>
                 ) : (
                   <>
