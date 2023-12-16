@@ -21,7 +21,7 @@ const RealStateDashboard = () => {
                     <SideNavigation />
                 </div>
 
-                <div className="pl-24 flex flex-col gap-10 w-full  xsm:pl-0" >
+                <div className="pl-24 flex flex-col gap-10 w-full  xsm:pl-0  " >
                     <div className="w-full py-5" >
                         <Header />
                     </div>

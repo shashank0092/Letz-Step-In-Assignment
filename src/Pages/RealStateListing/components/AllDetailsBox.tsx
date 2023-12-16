@@ -14,6 +14,9 @@ import { FaMap } from "react-icons/fa6";
 import { MdLeaderboard } from "react-icons/md";
 import { FaInfoCircle } from "react-icons/fa";
 import { SlActionRedo } from "react-icons/sl";
+import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 interface Props {
     property: {
         Id: string,
@@ -39,18 +42,33 @@ interface Props {
 
 
 const AllDetailsBox = ({ property, setDetailsBox }: Props) => {
-
+    const [queryForm, setQueryForm] = useState(false)
+    const queryFormSubmit = (e: React.FormEvent) => {
+        console.log("shukla boi")
+        e.preventDefault();
+        toast("Our Business Growth Team will get in touch shortly, Thank you for your valuable inquiry.", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+        setQueryForm(false)
+    }
 
     return (
         <>
-            <div className=" bg-gray-200 rounded-xl xsm:border border-red-500 xsm:w-[90vw] " >
+            <div className=" bg-gray-200 rounded-xl xsm:w-[90vw] md:h-[80vh] md:w-[80vw]" >
                 <div>
-                    <div style={{ backgroundImage: `url(${property.bigImage})` }} className="xsm:bg-cover  h-[40vh]  rounded-xl" ></div>
+                    <div style={{ backgroundImage: `url(${property.bigImage})` }} className="xsm:bg-cover  h-[40vh]   rounded-xl" ></div>
                     <div className="absolute top-2 left-2"   >
                         <MdCancel color="#ffff" size={40} onClick={() => setDetailsBox(false)} />
                     </div>
                 </div>
-                <div className="flex overflow-x-auto overflow-y-auto xsm:overflow-x-hidden h-80 xsm:flex-col" >
+                <div className="flex overflow-x-auto overflow-y-auto xsm:overflow-x-hidden xsm:flex-col  h-80 md:overflow-x-hidden  md:flex-col" >
                     <div className="p-5 flex flex-col gap-5 xsm:p-0" >
 
                         <div className="flex flex-row justify-between items-center gap-5 mt-2 xsm:px-3">
@@ -193,13 +211,46 @@ const AllDetailsBox = ({ property, setDetailsBox }: Props) => {
                                     <button className="bg-green-300 p-5 px-20 text-white text-xl font-bold rounded-xl xsm:w-full" >Buy</button>
                                 </div>
                                 <div>
-                                    <button className="bg-red-300 p-5 px-20 text-white text-xl font-bold rounded-xl xsm:w-full" >Report</button>
+                                    
+                                    {
+                                       queryForm ?
+                                           (<>
+                                               <div>
+                                                   <form onSubmit={queryFormSubmit}  className="flex flex-col gap-5 items-center" >
+                                                       <div className="flex gap-4 items-center" >
+                                                           <div>
+                                                               <p>Query:</p>
+                                                           </div>
+                                                           <div>
+                                                               <input type="text" placeholder="Enter Query Here" className="p-2 border border-black rounded-full" />
+                                                           </div>
+                                                       </div>
+                                                       <div className=" flex gap-4 items-center" >
+                                                           <div className="flex gap-4 items-center"  >
+                                                               <p>Email:</p>
+                                                           </div>
+                                                           <div>
+                                                               <input type="email" placeholder="Enter Email Here" className="p-2 border border-black rounded-full" />
+                                                           </div>
+                                                       </div>
+                                                       <div>
+                                                           <button type="submit"   className="bg-purple-500 p-2 rounded-lg text-white">
+                                                               Submit
+                                                           </button>
+                                                       </div>
+                                                   </form>
+                                               </div>
+
+                                             </>) :
+                                          (<><button className="bg-red-300 p-5 px-20 text-white text-xl font-bold rounded-xl xsm:w-full" onClick={() => setQueryForm(true)}  >Contact Now</button></>)
+                                           }
                                 </div>
                             </div>
                         </div>
 
                     </div>
                 </div>
+                <ToastContainer/>
             </div>
         </>
     )

@@ -28,18 +28,18 @@ const DetailsCard = ({property}:Props) => {
         <>
             <>
                  
-                <div className={`${showDetailsBox?("flex fixed bg-white top-0.5 m-10 bottom-0 left-20 right-0 xsm:m-0 xsm:left-5 xsm:top-10 border border-black rounded-xl h-[90vh]  justify-center item xsm:w-[90vw] "):("hidden")}`} >
+                <div className={`${showDetailsBox?("flex fixed bg-white top-0.5 m-10 bottom-0 left-20 right-0 xsm:m-0 xsm:left-5 xsm:top-10 md:top-16 md:h-[80vh] border border-black rounded-xl  h-[90vh]  justify-center item xsm:w-[90vw] "):("hidden")}`} >
                     <AllDetailsBox property={property} setDetailsBox={setDetailsBox}  />
                 </div>
 
-                <div className="  flex flex-col justify-around items-center  rounded-3xl bg-blue-200 w-[25vw] h-96 p-10 xsm:p-0 xsm:w-[38vw]  " >
+                <div className="  flex flex-col justify-around items-center  rounded-3xl bg-blue-200 w-[25vw] h-96 p-10 xsm:p-0 xsm:w-[38vw] md:w-[20vw]  md:p-0 " >
                     <div className="flex justify-center" >
                         <img src={property.image}  alt="propertye image" className="w-1/2 rounded-xl" />
                     </div>
                     <div className="flex flex-row xsm:flex xsm:flex-col  " >
 
                         <div>
-                            <p className="text-sm font-bold text-white  w-1/2 xsm:hidden" >
+                            <p className="text-sm font-bold text-white  w-1/2 xsm:hidden md:hidden" >
                                 {property.address}
                             </p>
                         </div>

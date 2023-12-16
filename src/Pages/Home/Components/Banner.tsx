@@ -11,7 +11,7 @@ const Banner=()=>{
 
             <div className="px-20 py-10 flex flex-row gap-5 bg-pink-400 xsm:flex-col xsm:justify-center xsm:items-center xsm:px-0 xsm:py-10 xsm:rounded-2xl"   >
 
-                <div className="w-3/12  xsm:w-3/4" > 
+                <div className="w-3/12  xsm:w-3/4 md:w-3/4" > 
                     <motion.img src="https://ik.imagekit.io/shashank007/Letz%20Step%20In%20Assignment/Logo.jpeg?updatedAt=1702453784543" alt="" className="w-full  rounded-xl" drag dragConstraints={{top:0,bottom:0,left:0,right:0}} />
                 </div>
 
