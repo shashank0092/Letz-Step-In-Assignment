@@ -61,14 +61,14 @@ const AllDetailsBox = ({ property, setDetailsBox }: Props) => {
 
     return (
         <>
-            <div className=" bg-gray-200 rounded-xl xsm:w-[90vw] md:h-[80vh] md:w-[80vw]" >
+            <div className=" bg-gray-200 rounded-xl xsm:w-[90vw] " >
                 <div>
                     <div style={{ backgroundImage: `url(${property.bigImage})` }} className="xsm:bg-cover  h-[40vh]   rounded-xl" ></div>
                     <div className="absolute top-2 left-2"   >
                         <MdCancel color="#ffff" size={40} onClick={() => setDetailsBox(false)} />
                     </div>
                 </div>
-                <div className="flex overflow-x-auto overflow-y-auto xsm:overflow-x-hidden xsm:flex-col  h-80 md:overflow-x-hidden  md:flex-col" >
+                <div className="flex overflow-x-auto overflow-y-auto xsm:overflow-x-hidden xsm:flex-col  h-80 " >
                     <div className="p-5 flex flex-col gap-5 xsm:p-0" >
 
                         <div className="flex flex-row justify-between items-center gap-5 mt-2 xsm:px-3">
