@@ -1,0 +1,9 @@
+@media screen and (min-width: 200px) and (max-width: 500px) {
+    .uldesign ul{
+        display: flex;
+        width: 50vw;
+    }
+    .uldesign ul a li a{
+        width: 70px;
+    }
+}

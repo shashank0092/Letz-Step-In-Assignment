@@ -14,7 +14,7 @@ import { GrUpgrade } from "react-icons/gr";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../global/store";
-
+import "./Sidebar.css"
 
 interface themeType {
   iconColor: string,
@@ -59,14 +59,18 @@ const Header = () => {
 
   return (
     <>
-      <div id="header" className="flex flex-col items-center bg-white  " >
+      <div id="header" className="flex flex-col items-center bg-white   " >
 
-        <div className="  xsm:bg-green-300 " >
-          <Sidebar collapsed={menuCollapse} className={`h-[100vh] xsm:w-[100vw] flex border-1 border-r border-black   ${menuCollapse ? (" xsm:h-[5vh]") : (" xsm:h-[20vh] xsm:w-[100vw]")} `}    >
-            <div className="flex flex-col h-full justify-between"  >
-              <div>
+        <div className="   xsm:w-[100vw]" >
+          <Sidebar collapsed={menuCollapse} rootStyles={{
+            '@media screen and (min-width: 200px) and (max-width: 500px)': {
+              width:"100vw"
+            },
+          }} className={`h-[100vh] xsm:w-[100vw] flex border-1 border-r border-black ${menuCollapse ? (" xsm:h-[5vh]") : (" xsm:h-[20vh] xsm:w-[100vw]")} `}    >
+            <div className="flex flex-col h-full justify-between "  >
+              <div className="" >
                 <div>
-                  <div className="flex flex-col justify-center items-center">
+                  <div className="flex flex-col justify-center items-center xsm:w-full">
 
                     <p  >{menuCollapse ? (
                       <div className="flex justify-center items-center">
@@ -80,41 +84,42 @@ const Header = () => {
                   </div>
 
                 </div>
-                <div>
-                  <Menu >
-                    <Link onClick={() => setCurrentDashboard(null)} to="/" >
-                      <MenuItem icon={<FaHome className={`text-${theme.iconColor}-300`} />}>
-                        <p   >Home</p>
+                <div >
+                  <Menu className="uldesign"  >
+
+                    <Link onClick={() => setCurrentDashboard(null)} to="/"  >
+                      <MenuItem icon={<FaHome className={`text-${theme.iconColor}-300 xsm:xsm:sm`} />}  >
+                        <p className="text-sm xsm:hidden"  >Home</p>
                       </MenuItem>
                     </Link>
 
 
                     <Link onClick={() => setCurrentDashboard("/realstate")} to="/realstate" >
-                    <MenuItem active={true} icon={<FaBuilding className={`text-${theme.iconColor}-300`} />}>
-                      <p  >Real State</p>
-                    </MenuItem>
+                      <MenuItem active={true} icon={<FaBuilding className={`text-${theme.iconColor}-300 xsm:text-sm`} />}>
+                        <p className="xsm:text-sm xsm:hidden" >Real State</p>
+                      </MenuItem>
                     </Link>
 
 
                     <Link onClick={() => setCurrentDashboard("/dineoutplace")} to="/dineoutplace">
-                    <MenuItem icon={<FaBowlFood className={`text-${theme.iconColor}-300`} />}>
-                      <p  >Dinner Place</p>
-                    </MenuItem>
+                      <MenuItem icon={<FaBowlFood className={`text-${theme.iconColor}-300 xsm:text-sm `} />}>
+                        <p className="xsm:text-sm xsm:hidden" >Dinner Place</p>
+                      </MenuItem>
                     </Link>
 
 
                     <Link onClick={() => setCurrentDashboard("/education")} to="/education">
-                    <MenuItem icon={<FaBookOpen className={`text-${theme.iconColor}-300`} />}>
-                      <p>Education</p>
-                    </MenuItem>
+                      <MenuItem icon={<FaBookOpen className={`text-${theme.iconColor}-300 xsm:text-sm`} />}>
+                        <p className="xsm:text-sm xsm:hidden" >Education</p>
+                      </MenuItem>
                     </Link>
 
 
-                   <Link onClick={() => setCurrentDashboard("/fitness")} to="/fitness">
-                   <MenuItem icon={<FaWeightHanging className={`text-${theme.iconColor}-300`} />}>
-                      <p>Fitness</p>
-                    </MenuItem>
-                   </Link>
+                    <Link onClick={() => setCurrentDashboard("/fitness")} to="/fitness">
+                      <MenuItem icon={<FaWeightHanging className={`text-${theme.iconColor}-300 xsm:text-sm`} />}>
+                        <p className="xsm:text-sm xsm:hidden">Fitness</p>
+                      </MenuItem>
+                    </Link>
 
 
                   </Menu>
