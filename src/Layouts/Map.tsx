@@ -36,7 +36,7 @@ const Map = ({lat,lng}:MapProp) => {
     return (
         <>
             <GoogleMapReact
-                bootstrapURLKeys={{ key: "AIzaSyACT48wOeY2GteVxA1YaiyrkraguN0rK2Y" }}
+                bootstrapURLKeys={{ key: "" }}
                 defaultCenter={location.center}
                 defaultZoom={location.zoom}
 
